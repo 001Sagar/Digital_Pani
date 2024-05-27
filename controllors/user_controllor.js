@@ -1,7 +1,7 @@
 const User = require('../models/UserSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
-
+const config = require('../config.json')
 
 //API for SignUP
 module.exports.SignUp = async function (req, res) {
@@ -49,7 +49,7 @@ module.exports.login = async function (req, res) {
         return res.status(200).json({
             user,
             data: {
-                token: jwt.sign(user.toJSON(), 'Guruji_Astro', { expiresIn: 10000 })
+                token: jwt.sign(user.toJSON(), config.jwtsecret, { expiresIn: 10000 })
             }
         })
     } catch (error) {

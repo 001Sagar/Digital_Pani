@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
-const secret = 'Guruji_Astro'; // replace with your own secret key
+const config = require('../config.json')
+
 
 
 module.exports.authenticate = async function(req,res,next){
@@ -10,7 +11,7 @@ module.exports.authenticate = async function(req,res,next){
           return res.status(401).json({message: 'Authorization token is missing'});
       }
   
-      jwt.verify(token, secret, (err, user) => {
+      jwt.verify(token, config.jwtsecret, (err, user) => {
           if (err) {
           return res.status(403).json({message: 'Invalid token'});
           }else{

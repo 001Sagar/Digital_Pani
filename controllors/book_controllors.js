@@ -81,7 +81,7 @@ module.exports.deleteBook = async function (req, res) {
         const { title } = req.body;
         const book = await Book.findOne({ title: title })
         if (!book) {
-            return res.status(404).json({ message: "EmailId is not found" })
+            return res.status(404).json({ message: "Book is not found" })
         }
 
         const del = await Book.findByIdAndDelete(book._id, {
