@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const config = require('../config.json')
+const jwtsecret = 'Digital_pani'
 
 
 
@@ -11,7 +11,7 @@ module.exports.authenticate = async function(req,res,next){
           return res.status(401).json({message: 'Authorization token is missing'});
       }
   
-      jwt.verify(token, config.jwtsecret, (err, user) => {
+      jwt.verify(token, jwtsecret, (err, user) => {
           if (err) {
           return res.status(403).json({message: 'Invalid token'});
           }else{

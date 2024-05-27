@@ -49,7 +49,7 @@ module.exports.login = async function (req, res) {
         return res.status(200).json({
             user,
             data: {
-                token: jwt.sign(user.toJSON(), config.jwtsecret, { expiresIn: 10000 })
+                token: jwt.sign(user.toJSON(), 'Digital_pani', { expiresIn: 10000 })
             }
         })
     } catch (error) {
