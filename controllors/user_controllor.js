@@ -1,7 +1,6 @@
 const User = require('../models/UserSchema');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken')
-const config = require('../config.json')
 
 //API for SignUP
 module.exports.SignUp = async function (req, res) {
